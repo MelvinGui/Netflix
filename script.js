@@ -58,19 +58,34 @@ const banners = [
 const hero = document.querySelector(".hero");
 let bannerAtual = 0;
 
-function mudaBanner(){
+function mudaBanner() {
     hero.style.backgroundImage = `
     linear-gradient(to top, #141414, transparent),
     url('${banners[bannerAtual]}')
     `;
-    bannerAtual++; 
+    bannerAtual++;
 
-    if(bannerAtual >= 4) {
+    if (bannerAtual >= 4) {
         bannerAtual = 0;
     }
 }
 
 mudaBanner();
 
-// Cham esse método a cada 3 segundos
+// Chamar esse método a cada 3 segundos
 setInterval(mudaBanner, 3000);
+
+function mudaTema() {
+    document.body.classList.toggle("light");
+
+    const icone = document.querySelector("#botao i");
+
+    // Validar se tá com tema claro ou escuro
+    if (document.body.classList.contains("light")) {
+        icone.classList.remove('fa-sun');
+        icone.classList.add('fa-moon');
+    } else {
+        icone.classList.remove('fa-moon');
+        icone.classList.add('fa-sun');
+    }
+}
